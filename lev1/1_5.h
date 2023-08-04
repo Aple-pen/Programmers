@@ -11,34 +11,18 @@
 
 using namespace std;
 
-namespace _1_5{
+namespace _1_5 {
     int solution(int n, int m, vector<int> section) {
         int wallPointer = 0;
-        int sectionIndex = 0;
         int count = 0;
 
-        while (sectionIndex < section.size()) {
-            if (wallPointer >= n) {
-                wallPointer--;
+        for (int i = 0; i < section.size(); i++) {
+            if (section[i] < wallPointer + 1) {
                 continue;
             }
-
-            if (sectionIndex < section.size()) {
-                wallPointer = (section[sectionIndex] - 1) + m; //check
-                count++;
-            }
-
-            if (wallPointer > n) {
-                break;
-            }
-
-            while (sectionIndex < section.size() && section[sectionIndex] < wallPointer + 1) {
-                sectionIndex++; //check
-            }
+            wallPointer = (section[i] - 1) + m; //check
+            count++;
         }
-
-        return count;
-
     }
 }
 
