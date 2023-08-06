@@ -1,18 +1,13 @@
-#include <string>
-#include <vector>
-#include <iostream>
-#include <unordered_map>
-#include "lev1/1_4.h"
+//
+// Created by Eung gi Kim on 2023/08/07.
+//
+//프로그래머스 대충 만든 자판 문제
 
-using namespace std;
+#ifndef PROGRAMMERS_1_6_H
+#define PROGRAMMERS_1_6_H
 
-template<class T>
-void vectorPrint(vector<T> v) {
-    for (auto r: v) {
-        cout << r << " ";
-    }
-    cout << endl;
-}
+#include<vector>
+#include<
 
 vector<int> solution(vector<string> keymap, vector<string> targets) {
     unordered_map<char,int> keyHash;
@@ -42,10 +37,4 @@ vector<int> solution(vector<string> keymap, vector<string> targets) {
     return answer;
 }
 
-
-int main() {
-    vector<string> keymap = {"ABACD", "BCEFD"};
-    vector<string> target = {"ABCD","AABB"};
-    vectorPrint(solution(keymap, target));
-    return 0;
-}
+#endif //PROGRAMMERS_1_6_H
