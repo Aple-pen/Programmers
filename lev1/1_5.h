@@ -8,11 +8,10 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include <unordered_map>
 
 using namespace std;
 
-namespace _1_6 {
+namespace _1_5 {
     int solution(int n, int m, vector<int> section) {
         int wallPointer = 0;
         int count = 0;

@@ -6,35 +6,41 @@
 #ifndef PROGRAMMERS_1_6_H
 #define PROGRAMMERS_1_6_H
 
-#include<vector>
-#include<
+#include <string>
+#include <vector>
+#include <iostream>
+#include <unordered_map>
 
-vector<int> solution(vector<string> keymap, vector<string> targets) {
-    unordered_map<char,int> keyHash;
-    vector<int>answer;
-    for(auto key : keymap){
-        for(int i = 0; i<key.length();i++){
-            auto iter = keyHash.find(key[i]);
-            if(iter != keyHash.end()){
-                if(i + 1 < iter->second )iter->second = i + 1;
-            }else keyHash.insert(make_pair(key[i],i + 1));
-        }
-    }
+using namespace std;
 
-    for(auto target : targets){
-        int sum = 0;
-        for(auto targetChar : target){
-            auto iter = keyHash.find(targetChar);
-            if(iter != keyHash.end()) sum += iter->second;
-            else{
-                sum = -1;
-                break;
+namespace _1_6{
+    vector<int> solution(vector<string> keymap, vector<string> targets) {
+        unordered_map<char,int> keyHash;
+        vector<int>answer;
+        for(auto key : keymap){
+            for(int i = 0; i<key.length();i++){
+                auto iter = keyHash.find(key[i]);
+                if(iter != keyHash.end()){
+                    if(i + 1 < iter->second )iter->second = i + 1;
+                }else keyHash.insert(make_pair(key[i],i + 1));
             }
         }
-        answer.push_back(sum == 0 ? -1 : sum);
-    }
 
-    return answer;
+        for(auto target : targets){
+            int sum = 0;
+            for(auto targetChar : target){
+                auto iter = keyHash.find(targetChar);
+                if(iter != keyHash.end()) sum += iter->second;
+                else{
+                    sum = -1;
+                    break;
+                }
+            }
+            answer.push_back(sum == 0 ? -1 : sum);
+        }
+
+        return answer;
+    }
 }
 
 #endif //PROGRAMMERS_1_6_H
