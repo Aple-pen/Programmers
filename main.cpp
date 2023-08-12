@@ -1,7 +1,6 @@
-#include "lev1/1_11.h"
+#include "lev1/1_12.h"
 
 #include <iostream>
-#include <string>
 
 using namespace std;
 
@@ -13,10 +12,8 @@ void vectorPrint(vector<T> v) {
     cout << endl;
 }
 
-
-
 int main() {
-    string s = "banana";
-    vectorPrint(_1_11::solution(s));
+    string s = "abracadabra";
+    cout<<_1_12::solution(s);
     return 0;
 }
