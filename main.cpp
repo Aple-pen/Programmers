@@ -1,10 +1,4 @@
-#include <vector>
-#include <iostream>
-#include <unordered_map>
-#include <sstream>
-#include <string>
-#include <string.h>
-#include "lev1/1_9.h"
+#include "lev1/1_10.h"
 
 using namespace std;
 
@@ -17,10 +11,11 @@ void vectorPrint(vector<T> v) {
 }
 
 
+
 int main() {
-    string today = "2022.05.19";
-    vector<string> terms = {"A 6", "B 12", "C 3"};
-    vector<string> privacies = {"2021.05.02 A", "2021.07.01 B", "2022.02.19 C", "2022.02.20 C"};
-    vectorPrint(_1_9::solution(today,terms,privacies));
+    string t = "3141592";
+    string p = "271";
+
+    cout<<_1_10::solution(t,p);
     return 0;
 }
