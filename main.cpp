@@ -1,4 +1,7 @@
-#include "lev1/1_10.h"
+#include "lev1/1_11.h"
+
+#include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -13,9 +16,7 @@ void vectorPrint(vector<T> v) {
 
 
 int main() {
-    string t = "3141592";
-    string p = "271";
-
-    cout<<_1_10::solution(t,p);
+    string s = "banana";
+    vectorPrint(_1_11::solution(s));
     return 0;
 }
