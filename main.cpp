@@ -1,9 +1,10 @@
-#include "lev1/1_13.h"
+#include "lev1/1_15.h"
 
 #include <iostream>
 #include <vector>
-#include <queue>
+#include <algorithm>
 #include <functional>
+
 using namespace std;
 
 template<class T>
@@ -15,9 +16,12 @@ void vectorPrint(vector<T> v) {
 }
 
 
+
+
 int main() {
-    int k = 3;
-    vector<int> score = {10, 100, 20, 150, 1, 100, 200};
-    vectorPrint(_1_13::solution(k,score));
+    int k = 4;
+    int m = 3;
+    vector<int> score = {4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2};
+    cout << _1_15::solution(k,m,score);
     return 0;
 }
