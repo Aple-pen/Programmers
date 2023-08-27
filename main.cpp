@@ -1,4 +1,4 @@
-#include "lev1/1_15.h"
+#include "lev1/1_17.h"
 
 #include <iostream>
 #include <vector>
@@ -20,8 +20,7 @@ void vectorPrint(vector<T> v) {
 
 
 int main() {
-
     vector<int> ingredient = {1, 1, 2, 2, 2, 3, 1};
-    cout << solution(ingredient) << endl;
+    cout << _1_17::solution(ingredient) << endl;
     return 0;
 }
