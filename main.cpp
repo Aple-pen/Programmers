@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <functional>
+#include <stack>
 
 using namespace std;
 
@@ -19,9 +20,8 @@ void vectorPrint(vector<T> v) {
 
 
 int main() {
-    int k = 4;
-    int m = 3;
-    vector<int> score = {4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2};
-    cout << _1_15::solution(k,m,score);
+
+    vector<int> ingredient = {1, 1, 2, 2, 2, 3, 1};
+    cout << solution(ingredient) << endl;
     return 0;
 }
