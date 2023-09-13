@@ -2,6 +2,7 @@
 #include <vector>
 #include <unordered_map>
 #include <string>
+#include <set>
 
 
 using namespace std;
@@ -14,38 +15,46 @@ void vectorPrint(vector<T> v) {
     cout << endl;
 }
 
-string solution(vector<string> survey, vector<int> choices) {
-    string answer = "";
-    vector<string> indicators = {"RT","CF","JM","AN"};
-    unordered_map<char, int> table = {
-            {'R', 0},{'T', 0},{'C', 0},{'F', 0},{'J', 0},{'M', 0},{'A', 0},{'N', 0}
-    };
+vector<int> solution(vector<string> id_list, vector<string> report, int k) {
+    vector<int> answer;
+    unordered_map<string, set<string>> reporterCheck; //중복 방지
+    unordered_map<string, int> reportedCount;
+    unordered_map<string, int> reporterCount;
+    set<string>stopList;
 
-    for (int i = 0; i < survey.size(); i++) {
-        int choice = choices[i] - 4;
-        if(choice < 0) table[survey[i][0]] += choice * -1;
-        else if(choice > 0) table[survey[i][1]] += choice;
-    }
+    for (auto repo: report) {
+        auto r = repo.find(" ");
+        string reporter = repo.substr(0, r);
+        string reported = repo.substr(r + 1, repo.size());
 
-    for(auto indicator : indicators){
-        int max = -1;
-        string higherChar = "";
-        for(int c = 0;c<2;c++){
-            if(table[indicator[c]] > max){
-                max = table[indicator[c]];
-                higherChar = indicator[c];
+        auto index = reporterCheck[reporter].find(reported);
+        if (!reporterCheck[reporter].empty()) {
+            if (index == reporterCheck[reporter].end()) {
+                reporterCheck[reporter].insert(reported);
+                reportedCount[reported] += 1;
+                if(reportedCount[reported] >= k) stopList.insert(reported);
             }
+        } else {
+            reporterCheck[reporter].insert(reported);
+            reportedCount[reported] += 1;
+            if(reportedCount[reported] >= k) stopList.insert(reported);
         }
-        answer += higherChar;
     }
 
+    for (auto id: id_list) {
+        for(auto stop : stopList){
+            auto r = reporterCheck[id].find(stop);
+            if(r != reporterCheck[id].end()) reporterCount[id]+=1;
+        }
+        answer.push_back(reporterCount[id]);
+    }
     return answer;
 }
 
 int main() {
-    vector<string> survey = {"TR", "RT", "TR"};
-    vector<int> choice = {7, 1, 3};
+    vector<string> id_list = {"muzi", "frodo", "apeach", "neo"};
+    vector<string> report = {"muzi frodo", "muzi frodo", "apeach frodo", "frodo neo", "muzi neo", "apeach muzi"};
+    int k = 2;
 
-    cout << solution(survey,choice) << endl;
-    return 0;
+    vectorPrint(solution(id_list, report, k));
 }
